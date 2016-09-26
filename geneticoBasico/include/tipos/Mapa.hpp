@@ -1,3 +1,11 @@
+/*
+*	Este objeto contiene toda la información contextual para la búsqueda de rutas
+*	_size := número de ciudades
+*	_pCoordenadas := coordenadas de las ciudades en la grilla
+*	_distancias := matriz de distrancias (tsp simétrico)
+*	_costo := logitud del ciclo hamiltoniano 
+*/
+
 class Mapa {
 	private:
 		int _size;

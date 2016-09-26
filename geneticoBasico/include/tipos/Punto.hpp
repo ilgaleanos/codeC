@@ -1,3 +1,7 @@
+/*
+*	Objeto auxiliar, las coordenadas del ejercicio son un array de puntos
+*	distancia := distancia euclidiana
+*/
 class Punto {
 	private:
 		int _x;
