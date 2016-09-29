@@ -23,10 +23,6 @@ class Colonia {
 	public:
 		Colonia (int size);
 
-		int * getReina();
-		int * getZangano();
-		int * getHijo();
-
 		void setZanganoAsReina();
 		void setHijoAsReina();
 
@@ -55,18 +51,6 @@ void Colonia::_generar(int *vector) {
 	for (int i = 0; i < _size; i++) {
 		std::swap( vector[i], vector[ uniform_distribution(0, _size) ]);
 	}
-}
-
-int * Colonia::getReina() {
-	return _reina;
-}
-
-int * Colonia::getZangano() {
-	return _zangano;
-}
-
-int * Colonia::getHijo() {
-	return _hijo;
 }
 
 void Colonia::setZanganoAsReina() {

@@ -19,7 +19,6 @@ int main()
 
 	colonia->setZanganoAsReina();
 	print_double_matriz( mapa->getDistancias(), 3, 3);
-	printf("%f\n", mapa->costo( colonia->getReina() ) );
 
 	delete mapa;
 	delete colonia;
