@@ -2,8 +2,8 @@
 *	Este objeto contiene toda la información contextual para la búsqueda de rutas
 *	_size := número de ciudades
 *	_pCoordenadas := coordenadas de las ciudades en la grilla
-*	_distancias := matriz de distrancias (tsp simétrico)
-*	_costo := logitud del ciclo hamiltoniano 
+*	_distancias := matriz de distancias (tsp simétrico)
+*	_costo := logitud del ciclo hamiltoniano
 */
 
 class Mapa {
@@ -32,7 +32,6 @@ Mapa::Mapa(int size, Punto *pCoordenadas) {
 			_distancias[ _size * i + j ] = pCoordenadas[j].distancia(&pCoordenadas[i]);
 		}
 	}
-	print_double_matriz(_distancias, _size, _size);
 }
 
 inline int Mapa::getSize() {
@@ -53,7 +52,7 @@ inline double Mapa::getCosto() {
 
 double Mapa::costo(int *ruta) {
 	_costo = _distancias[ _size * ruta[_size-1] + ruta[0] ];
-	for (size_t i = 0; i < _size - 1; i++) {
+	for (int i = 0; i < _size - 1; i++) {
 		_costo += _distancias[i] + _distancias[i+1];
 	}
 	return _costo;
