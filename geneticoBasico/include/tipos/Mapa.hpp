@@ -1,54 +1,59 @@
 /*
 *	Este objeto contiene toda la información contextual para la búsqueda de rutas
 *	_size := número de ciudades
-*	_pCoordenadas := coordenadas de las ciudades en la grilla
+*	_coordenadas := coordenadas de las ciudades en la grilla
 *	_distancias := matriz de distancias (tsp simétrico)
 *	_costo := logitud del ciclo hamiltoniano
 */
+#include "./../statics/utiles.hpp"
 
 class Mapa {
-	private:
+	protected:
 		int _size;
-		Punto *_pCoordenadas;
-		double *_distancias;
+	private:
 		double _costo;
+		Punto *_coordenadas;
+		double *_distancias;
 	public:
-		Mapa(int _size, Punto *pCoordenadas);
+		Mapa(int _size, Punto *coordenadas);
+
 		inline int getSize();
+		inline void getDistancias();
 		inline Punto * getCoordenadas();
-		inline double * getDistancias();
-		inline double getCosto();
+
 		double costo (int *ruta);
-		~Mapa();
+
+		virtual ~Mapa();
 };
 
-Mapa::Mapa(int size, Punto *pCoordenadas) {
+
+Mapa::Mapa(int size, Punto *coordenadas) {
 	_size = size;
-	_pCoordenadas = pCoordenadas;
+	_coordenadas = coordenadas;
 	_distancias = (double*) calloc (_size * _size, 8);
 
 	for (size_t i = 0; i < _size; i++) {
 		for (size_t j = 0; j < _size; j++) {
-			_distancias[ _size * i + j ] = pCoordenadas[j].distancia(&pCoordenadas[i]);
+			_distancias[ _size * i + j ] = coordenadas[j].distancia(&coordenadas[i]);
 		}
 	}
 }
+
 
 inline int Mapa::getSize() {
 	return _size;
 }
 
+
 inline Punto * Mapa::getCoordenadas() {
-	return _pCoordenadas;
+	return _coordenadas;
 }
 
-inline double * Mapa::getDistancias() {
-	return _distancias;
+
+inline void Mapa::getDistancias() {
+	print( _distancias, _size, _size );
 }
 
-inline double Mapa::getCosto() {
-	return _costo;
-}
 
 double Mapa::costo(int *ruta) {
 	_costo = _distancias[ _size * ruta[_size-1] + ruta[0] ];
@@ -57,6 +62,8 @@ double Mapa::costo(int *ruta) {
 	}
 	return _costo;
 }
+
+
 
 Mapa::~Mapa() {
 	free(_distancias);

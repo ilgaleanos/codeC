@@ -14,13 +14,12 @@ int main()
 	srand(time(NULL));
 
 	Punto coordenadas[] = { Punto(1,1), Punto(-1,1), Punto(0,0) };
-	Mapa *mapa = new Mapa(3, &coordenadas[0]);
-	Colonia *colonia = new Colonia( 3 );
+	Colonia *colonia = new Colonia( 3, &coordenadas[0]);
 
 	colonia->setZanganoAsReina();
-	print_double_matriz( mapa->getDistancias(), 3, 3);
-
-	delete mapa;
+	colonia->getDistancias();
+	print(colonia->costoReina());
+	// delete mapa;
 	delete colonia;
 	return 0;
 }

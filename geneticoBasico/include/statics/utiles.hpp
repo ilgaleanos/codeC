@@ -1,4 +1,20 @@
-void print_int_vector(int *v, size_t sz) {
+inline void print(int n) {
+	printf("%i\n", n);
+}
+
+inline void print(size_t n) {
+	printf("%zu\n", n);
+}
+
+inline void print(float n) {
+	printf("%f\n", n);
+}
+
+inline void print(double n) {
+	printf("%f\n", n);
+}
+
+void print(int *v, size_t sz) {
 	printf("[ ");
 	for (size_t i = 0; i < sz - 1; i++) {
 		printf("%i, ", v[i]);
@@ -7,7 +23,7 @@ void print_int_vector(int *v, size_t sz) {
 }
 
 
-void print_size_t_vector(size_t *v, size_t sz) {
+void print(size_t *v, size_t sz) {
 	printf("[ ");
 	for (size_t i = 0; i < sz - 1; i++) {
 		printf("%zu, ", v[i]);
@@ -16,7 +32,7 @@ void print_size_t_vector(size_t *v, size_t sz) {
 }
 
 
-void print_float_vector(float *v, size_t sz) {
+void print(float *v, size_t sz) {
 	printf("[ ");
 	for (size_t i = 0; i < sz - 1; i++) {
 		printf("%f, ", v[i]);
@@ -25,7 +41,7 @@ void print_float_vector(float *v, size_t sz) {
 }
 
 
-void print_double_vector(double *v, size_t sz) {
+void print(double *v, size_t sz) {
 	printf("[ ");
 	for (size_t i = 0; i < sz - 1; i++) {
 		printf("%f, ", v[i]);
@@ -34,7 +50,7 @@ void print_double_vector(double *v, size_t sz) {
 }
 
 
-void print_int_matriz(int *v, size_t szX, size_t szY) {
+void print(int *v, size_t szX, size_t szY) {
 	printf("[ \n");
 	for (size_t j = 0; j < szY; j++) {
 		printf(" [ ");
@@ -48,7 +64,7 @@ void print_int_matriz(int *v, size_t szX, size_t szY) {
 }
 
 
-void print_size_t_matriz(size_t *v, size_t szX, size_t szY) {
+void print(size_t *v, size_t szX, size_t szY) {
 	printf("[ \n");
 	for (size_t j = 0; j < szY ; j++) {
 		printf(" [ ");
@@ -62,7 +78,7 @@ void print_size_t_matriz(size_t *v, size_t szX, size_t szY) {
 }
 
 
-void print_float_matriz(float *v, size_t szX, size_t szY) {
+void print(float *v, size_t szX, size_t szY) {
 	printf("[ \n");
 	for (size_t j = 0; j < szY ; j++) {
 		printf(" [ ");
@@ -76,7 +92,7 @@ void print_float_matriz(float *v, size_t szX, size_t szY) {
 }
 
 
-void print_double_matriz(double *v, size_t szX, size_t szY) {
+void print(double *v, size_t szX, size_t szY) {
 	printf("[ \n");
 	for (size_t j = 0; j < szY ; j++) {
 		printf(" [ ");
@@ -87,4 +103,11 @@ void print_double_matriz(double *v, size_t szX, size_t szY) {
 	}
 	printf("]\n");
 
+}
+
+/*
+*	Esta función devuelve un entero seudo-aleatorio entre [rangeLow, rangeHigh)
+*/
+inline int uniform_distribution(int rangeLow, int rangeHigh) {
+	return rand()/(1.0 + RAND_MAX) * (rangeHigh - rangeLow)  + rangeLow;
 }
