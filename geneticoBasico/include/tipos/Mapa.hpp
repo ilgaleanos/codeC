@@ -16,7 +16,7 @@ class Mapa {
 		double _costo;
 		Punto *_coordenadas;
 	public:
-		Mapa(int _size, Punto *coordenadas);
+		Mapa(int &size, Punto *coordenadas);
 
 		inline int getSize();
 		inline void getDistancias();
@@ -27,8 +27,11 @@ class Mapa {
 		virtual ~Mapa();
 };
 
-
-Mapa::Mapa(int size, Punto *coordenadas) {
+/*
+*	Calculamos la matriz simétrica de distancias a partir de las coordenadas
+*	de las ciudades apoyándonos en la clase punto
+*/
+Mapa::Mapa(int &size, Punto *coordenadas) {
 	_size = size;
 	_coordenadas = coordenadas;
 	_distancias = (double*) calloc (_size * _size, 8);
@@ -40,22 +43,30 @@ Mapa::Mapa(int size, Punto *coordenadas) {
 	}
 }
 
-
+/*
+*	getter de la cantidad de ciudades
+*/
 inline int Mapa::getSize() {
 	return _size;
 }
 
-
+/*
+*	getter de las coordenadas
+*/
 inline Punto * Mapa::getCoordenadas() {
 	return _coordenadas;
 }
 
-
+/*
+*	print de las distancias
+*/
 inline void Mapa::getDistancias() {
 	print( _distancias, _size, _size );
 }
 
-
+/*
+*	Encargada de calcular el costo de recorrer una ruta en este mapa
+*/
 double Mapa::costo(int *ruta) {
 	_costo = _distancias[ _size * ruta[_size-1] + ruta[0] ];
 	for (int i = 0; i < _size - 1; i++) {
@@ -65,7 +76,9 @@ double Mapa::costo(int *ruta) {
 }
 
 
-
+/*
+*	liberamos memoria
+*/
 Mapa::~Mapa() {
 	free(_distancias);
 }

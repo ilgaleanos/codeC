@@ -14,7 +14,7 @@ inline void print(double n) {
 	printf("%f\n", n);
 }
 
-void print(int *v, size_t sz) {
+void print(int *v, const size_t &sz) {
 	printf("[ ");
 	for (size_t i = 0; i < sz - 1; i++) {
 		printf("%i, ", v[i]);
@@ -23,7 +23,7 @@ void print(int *v, size_t sz) {
 }
 
 
-void print(size_t *v, size_t sz) {
+void print(size_t *v, const size_t &sz) {
 	printf("[ ");
 	for (size_t i = 0; i < sz - 1; i++) {
 		printf("%zu, ", v[i]);
@@ -32,7 +32,7 @@ void print(size_t *v, size_t sz) {
 }
 
 
-void print(float *v, size_t sz) {
+void print(float *v, const size_t &sz) {
 	printf("[ ");
 	for (size_t i = 0; i < sz - 1; i++) {
 		printf("%f, ", v[i]);
@@ -41,7 +41,7 @@ void print(float *v, size_t sz) {
 }
 
 
-void print(double *v, size_t sz) {
+void print(double *v, const size_t &sz) {
 	printf("[ ");
 	for (size_t i = 0; i < sz - 1; i++) {
 		printf("%f, ", v[i]);
@@ -50,7 +50,7 @@ void print(double *v, size_t sz) {
 }
 
 
-void print(int *v, size_t szX, size_t szY) {
+void print(int *v, const size_t &szX, const size_t &szY) {
 	printf("[ \n");
 	for (size_t j = 0; j < szY; j++) {
 		printf(" [ ");
@@ -64,7 +64,7 @@ void print(int *v, size_t szX, size_t szY) {
 }
 
 
-void print(size_t *v, size_t szX, size_t szY) {
+void print(size_t *v, const size_t &szX, const size_t &szY) {
 	printf("[ \n");
 	for (size_t j = 0; j < szY ; j++) {
 		printf(" [ ");
@@ -78,7 +78,7 @@ void print(size_t *v, size_t szX, size_t szY) {
 }
 
 
-void print(float *v, size_t szX, size_t szY) {
+void print(float *v, const size_t &szX, const  size_t &szY) {
 	printf("[ \n");
 	for (size_t j = 0; j < szY ; j++) {
 		printf(" [ ");
@@ -92,7 +92,7 @@ void print(float *v, size_t szX, size_t szY) {
 }
 
 
-void print(double *v, size_t szX, size_t szY) {
+void print(double *v, const size_t &szX, const size_t &szY) {
 	printf("[ \n");
 	for (size_t j = 0; j < szY ; j++) {
 		printf(" [ ");
@@ -108,6 +108,6 @@ void print(double *v, size_t szX, size_t szY) {
 /*
 *	Esta función devuelve un entero seudo-aleatorio entre [rangeLow, rangeHigh)
 */
-inline int uniform_distribution(int rangeLow, int rangeHigh) {
+inline int uniform_distribution(const int &rangeLow, const int &rangeHigh) {
 	return rand()/(1.0 + RAND_MAX) * (rangeHigh - rangeLow)  + rangeLow;
 }
