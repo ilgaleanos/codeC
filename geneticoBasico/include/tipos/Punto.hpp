@@ -4,39 +4,39 @@
 */
 class Punto {
 	private:
-		int _x;
-		int _y;
+		float _x;
+		float _y;
 	public:
-		Punto(int x, int y);
-		inline int getX();
-		inline int getY();
-		inline void setX(int x);
-		inline void setY(int y);
-		inline double distancia (Punto *p);
+		Punto(float x, float y);
+		inline float getX();
+		inline float getY();
+		inline void setX(float x);
+		inline void setY(float y);
+		inline float distancia (Punto *p);
 };
 
-Punto::Punto(int x, int y) {
+Punto::Punto(float x, float y) {
 	_x = x;
 	_y = y;
 }
 
-inline int Punto::getX() {
+inline float Punto::getX() {
 	return _x;
 }
 
-inline int Punto::getY() {
+inline float Punto::getY() {
 	return _y;
 }
 
-inline void Punto::setX(int x) {
+inline void Punto::setX(float x) {
 	_x = x;
 }
 
-inline void Punto::setY(int y) {
+inline void Punto::setY(float y) {
 	_y = y;
 }
 
-inline double Punto::distancia(Punto *p) {
-	int Dx = (_x - p->_x), Dy = (_y - p->_y);
+inline float Punto::distancia(Punto *p) {
+	float Dx = (_x - p->_x), Dy = (_y - p->_y);
 	return sqrt( (Dx * Dx) + (Dy * Dy) );
 }

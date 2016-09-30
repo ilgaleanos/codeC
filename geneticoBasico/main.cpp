@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "./include/tipos/Punto.hpp"
 #include "./include/tipos/Mapa.hpp"
 #include "./include/tipos/Colonia.hpp"
 
@@ -12,14 +11,31 @@ using namespace std;
 int main()
 {
 	srand(time(NULL));
+	int n = 48;
+	Colonia *colonia = new Colonia( n, &att48[0]);
 
-	Punto coordenadas[] = { Punto(1,1), Punto(-1,1), Punto(0,0) };
-	Colonia *colonia = new Colonia( 3, &coordenadas[0]);
+	bool bandera = false;
+	size_t regresiva = 20 * n;
 
-	colonia->setZanganoAsReina();
-	colonia->getDistancias();
-	print(colonia->costoReina());
-	// delete mapa;
+	while( regresiva > 0) {
+
+		for (size_t i = 0; i < 2 * n; i++) {
+
+			bandera = colonia->cruzar();
+			if(bandera){ regresiva = 20 * n; }
+
+		}
+
+		for (size_t i = 0; i < 2 * n; i++) {
+
+			bandera = colonia->opt2();
+			if(bandera){ regresiva = 20 * n; }
+
+		}
+
+		regresiva--;
+	}
+
 	delete colonia;
 	return 0;
 }

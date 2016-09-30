@@ -6,14 +6,15 @@
 *	_costo := logitud del ciclo hamiltoniano
 */
 #include "./../statics/utiles.hpp"
+#include "./../coordenadas/coor.hpp"
 
 class Mapa {
 	protected:
 		int _size;
+		double *_distancias;
 	private:
 		double _costo;
 		Punto *_coordenadas;
-		double *_distancias;
 	public:
 		Mapa(int _size, Punto *coordenadas);
 
@@ -58,7 +59,7 @@ inline void Mapa::getDistancias() {
 double Mapa::costo(int *ruta) {
 	_costo = _distancias[ _size * ruta[_size-1] + ruta[0] ];
 	for (int i = 0; i < _size - 1; i++) {
-		_costo += _distancias[i] + _distancias[i+1];
+		_costo += _distancias[ _size * ruta[i] + ruta[i+1]];
 	}
 	return _costo;
 }
