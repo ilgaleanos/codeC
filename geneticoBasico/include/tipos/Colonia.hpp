@@ -26,7 +26,7 @@ class Colonia: public Mapa {
 		double _dReina, _dZangano;
 		int _indexReina, _indexZangano;
 
-		void _generar(int *vector);
+		void _generar(int *v);
 		int _index(int *v, const int &el);
 		bool _contenido(int *v, const int &el, const int &limit );
 		void _asignarEntero(int *v, const int &limit);
@@ -73,9 +73,9 @@ Colonia::Colonia(int size, Punto *coordenadas): Mapa(size, coordenadas) {
 /*
 *	Hacemos una barajada del vector para generar nuevas rutas
 */
-void Colonia::_generar(int *vector) {
+void Colonia::_generar(int *v) {
 	for (int i = 0; i < _size; i++) {
-		std::swap( vector[i], vector[ uniform_distribution(0, _size) ]);
+		std::swap( v[i], v[ randInt(0, _size) ]);
 	}
 	return;
 }

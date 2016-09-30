@@ -108,6 +108,13 @@ void print(double *v, const size_t &szX, const size_t &szY) {
 /*
 *	Esta función devuelve un entero seudo-aleatorio entre [rangeLow, rangeHigh)
 */
-inline int uniform_distribution(const int &rangeLow, const int &rangeHigh) {
+inline int randInt(const int &rangeLow, const int &rangeHigh) {
 	return rand()/(1.0 + RAND_MAX) * (rangeHigh - rangeLow)  + rangeLow;
+}
+
+/*
+*	Esta función devuelve un entero seudo-aleatorio entre [0, 1)
+*/
+inline int randR() {
+	return rand()/(1.0 + RAND_MAX);
 }
