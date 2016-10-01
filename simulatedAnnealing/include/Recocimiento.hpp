@@ -26,10 +26,10 @@ class RecoSim: public Mapa {
 RecoSim::RecoSim(int size, Punto *coordenadas, int maxTpasos, double T, double congelante): Mapa(size, coordenadas) {
 	_size 			= size;					// Number of cities to visit
 	_maxTpasos		= maxTpasos;			// Temperature is lowered not more than maxTsteps
-	_T 				= T;		   			// Starting temperature - has to be high enough
+	_T 			= T;		   			// Starting temperature - has to be high enough
 	_congelante		= congelante;			// Factor to multiply temperature at each cooling step
 	_maxPasos 		= 100 * _size; 			// Number of steps at constant temperature
-	_maxAceptado 	= 10 * _size;  			// Number of accepted steps at constant temperature
+	_maxAceptado 		= 10 * _size;  			// Number of accepted steps at constant temperature
 
 
 	_moviendo	= (int*) calloc ( 6,  4);
