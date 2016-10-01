@@ -115,6 +115,6 @@ inline int randInt(const int &rangeLow, const int &rangeHigh) {
 /*
 *	Esta función devuelve un entero seudo-aleatorio entre [0, 1)
 */
-inline int randR() {
+inline double randR() {
 	return rand()/(1.0 + RAND_MAX);
 }
