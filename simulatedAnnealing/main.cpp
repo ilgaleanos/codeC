@@ -15,7 +15,7 @@ int main()
 
 	int maxTpasos = 100;
 	double T = 100, congelante = 0.9;
-	RecoSim *simulacion = new RecoSim(48, &att48[0], maxTpasos , T, congelante);
+	RecoSim *simulacion = new RecoSim(442, &pcb442[0], maxTpasos , T, congelante);
 	simulacion->recocido();
 
 	delete simulacion;
