@@ -18,6 +18,7 @@ using namespace std;
 
 int main (void) {
 	Knn * esp = new Knn(20,2);
-	esp->distancia(100);
+	esp->distancia(10);
+	delete esp;
 	return 0;
 }
