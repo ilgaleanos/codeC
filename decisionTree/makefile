@@ -1,6 +1,6 @@
 CC                       = g++
 STD                     = -std=c++11
-CFLAGS             = -Wall
+CFLAGS             = -Wall -Wfatal-errors
 INCLUDES        = -L/usr/local/include
 OPTIM               = -O3 -march=native
 TARGET             = main

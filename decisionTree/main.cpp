@@ -6,6 +6,9 @@
 #include <map>
 #include <math.h>
 
+#include <iostream>
+
+#include "./include/Node.hpp"
 #include "./include/entropy.hpp"
 #include "./include/splitDataSet.hpp"
 #include "./include/tree.hpp"
@@ -15,29 +18,44 @@ using namespace std;
 
 
 int main (void) {
-        const int SIZE = 5;
+        const size_t SIZE = 5;
+        const size_t FEAT = 2;
 
-        Node dataset[SIZE];
-        dataset[0] = {left: true, right: true, label: "yes"};
-        dataset[1] = {left: true, right: true, label: "yes"};
-        dataset[2] = {left: true, right: false, label: "no"};
-        dataset[3] = {left: false, right: true, label: "no"};
-        dataset[4] = {left: false, right: true, label: "no"};
+
+        double values[FEAT];
+        Node *dataset[SIZE];
+
+        values[0] = 1; values[1] = 1;
+        dataset[0] = new Node(values, FEAT, "yes");
+        dataset[1] = new Node(values, FEAT, "yes");
+        values[0] = 1; values[1] = 0;
+        dataset[2] = new Node(values, FEAT, "no");
+        values[0] = 0; values[1] = 1;
+        dataset[3] = new Node(values, FEAT, "no");
+        dataset[4] = new Node(values, FEAT, "no");
 
         printf("%0.16f\n", Entropy(dataset, SIZE));
 
-        Tree *mDemo  = new Tree(dataset, SIZE);
-        delete mDemo;
+        Tree *mDemo  = new Tree(*dataset, SIZE);
 
-        bool side = true;
-        bool value = true;
-        size_t sizeOut = countDataset(dataset, SIZE, side, value );
+        double axis = 0;
+        double value = 1;
+        size_t sizeOut = countDataset(dataset, SIZE, axis, value );
 
-        Reduced *out = new Reduced[sizeOut];
+        Node *out[sizeOut];
 
-        splitDataSet(dataset, SIZE, side, value, out);
+        splitDataSet(dataset, SIZE, axis, value, out);
         for (size_t i = 0; i < sizeOut; i++) {
-                printf("%i %s\n", out[i].value, out[i].label.c_str() );
+                printf("%s\n", out[i]->getLabel().c_str() );
         }
+
+        delete mDemo;
+        for (size_t i = 0; i < SIZE; i++) {
+                delete dataset[i];
+        }
+        for (size_t i = 0; i < sizeOut; i++) {
+                delete out[i];
+        }
+
         return 0;
 }

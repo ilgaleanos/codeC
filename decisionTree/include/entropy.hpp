@@ -1,16 +1,10 @@
-struct Node {
-        bool left;
-        bool right;
-        std::string label;
-};
-
-double Entropy( Node *dataset, size_t _size) {
+double Entropy( Node **dataset, size_t _size) {
         std::map < std::string, int > labelCounts;
         std::map < std::string, int >::iterator iterator;
 
         std::string currentLabel;
         for (size_t i = 0; i < _size; i++) {
-                currentLabel = dataset[i].label;
+                currentLabel = dataset[i]->getLabel();
                 iterator = labelCounts.find(currentLabel);
                 if ( iterator == labelCounts.end() ) {
                         labelCounts[currentLabel] = 1;
